@@ -19,12 +19,13 @@ variable PublicSubnetZone {
 
 variable "Tag" {
 	default = "ibm"
+	description = "App ID tag of application using the deployment"
 	type = string
 }
 
 variable "UserEmailTag" {
-	type = string
 	description = "Email address tag of user creating the stack"
+	type = string
 	validation {
 		condition = length(var.UserEmailTag) >= 14
 		error_message = "UserEmailTag minimum length must be >= 14."
@@ -32,8 +33,9 @@ variable "UserEmailTag" {
 }
 
 variable "UserLoginTag" {
+	default = "terraform"
+	description = "Login ID tag of user creating the deployment"
 	type = string
-	description = "Login ID tag of user creating the stack"
 	validation {
 		condition = length(var.UserLoginTag) >= 4
 		error_message = "UserLoginTag minimum length must be >= 4."
@@ -42,10 +44,12 @@ variable "UserLoginTag" {
 
 variable "UserProjectTag" {
 	default = "example"
+	description = "Project tag of user creating the deployment"
 	type = string
 }
 
 variable "Version" {
 	default = "demo"
+	description = "Versioning of the application using the deployment"
 	type = string
 }
